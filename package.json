@@ -15,6 +15,7 @@
         "bcrypt": "^5.0.0",
         "better-sqlite3": "^7.1.0",
         "compression": "^1.7.1",
+        "express": "^4.17.1",
         "jsonwebtoken": "^8.5.1",
         "nodemailer": "^6.4.11",
         "polka": "next",

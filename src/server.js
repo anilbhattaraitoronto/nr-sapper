@@ -9,13 +9,17 @@ const app = express();
 const { PORT, NODE_ENV } = process.env;
 const dev = NODE_ENV === "development";
 
+const assets = sirv("static", {
+  maxAge: 31536000, // 1Y
+  immutable: true,
+});
+
 app.use(express.json());
 app.use(express.urlencoded({ limit: "2mb", extended: true }));
 
 app // You can also use Express
   .use(
-    compression({ threshold: 0 }),
-    sirv("static", { dev }),
+    compression(assets, { threshold: 0 }),
     sapper.middleware(),
   )
   .listen(PORT, (err) => {
